@@ -1,5 +1,7 @@
 
 #include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
 
 int swap(int &a, int &b)
 {
@@ -114,21 +116,36 @@ int quickSort(int *a, int l, int r)
 
 int main()
 {
-    int a[] = {1, 99, 22, 34, 65, 3, 87, 1, 23, 21};
-    for(int i = 0; i < 10; ++i)
+//    int a[] = {1, 99, 22, 34, 65, 3, 87, 1, 23, 21};
+	long start = 0;
+	long end = 0;
+	const int num = 60000;
+	int a[num];
+	for(int k = 0; k < num; ++k)
+	{
+		a[k] = rand()%num;
+	}
+	/*
+    for(int i = 0; i < num; ++i)
     {
 		printf("%d-",a[i]);
     }
     printf("\n");
+	*/
     //selectSort(a, 10);
 	//insertSort(a, 10);
 	//quickSort(a, 0, 9);
 	//bubbleSort(a, 10);
-	shellSort(a, 10);
-    for(int i = 0; i < 10; ++i)
+	start = clock();
+	quickSort(a, 0, num-1);
+	//bubbleSort(a, 10);
+	//shellSort(a, num);
+	end = clock();
+    for(int i = 0; i < num; ++i)
     {
 		printf("%d-",a[i]);
     }
     printf("\n");
+	printf("the time ---%ld ---\n",(end-start)/1000);
     return 0;
 }
